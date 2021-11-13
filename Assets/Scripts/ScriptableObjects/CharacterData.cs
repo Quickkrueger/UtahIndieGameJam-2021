@@ -7,8 +7,6 @@ public class CharacterData : CollectableSO
     public int characterSpriteOffset = 0;
     public AnimationData[] animations;
     public Stats characterStats;
-
-    public CharacterHusk currentHusk;
 }
 
 [System.Serializable]
@@ -16,4 +14,7 @@ public struct Stats
 {
     public float speed;
     public float jumpHeight;
+    public bool durable;
+    public bool flys;
+    public bool climbs;
 }

@@ -10,7 +10,7 @@ public class ControlsData : ScriptableObject
 
     public int maxJumps = 1;
 
-    int jumpsAvailable;
+    public int jumpsAvailable = 1;
 
     public bool canClimb;
 

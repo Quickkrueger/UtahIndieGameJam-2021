@@ -25,7 +25,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
     - m_Name: Jump
-      m_Type: 1
+      m_Type: 0
       m_ExpectedControlType: Button
       m_Id: 71c6da80-b121-4d04-8021-be67b7280c6a
       m_Processors: 
@@ -95,5 +95,6 @@ MonoBehaviour:
       m_Action: Fly
       m_Flags: 0
   maxJumps: 1
+  jumpsAvailable: 1
   canClimb: 0
-  canFly: 0
+  canFly: 1
