@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
 
     private Coroutine groundChecker;
     private Coroutine climbChecker;
+    private Coroutine walkPressed;
 
     private InputActionMap characterInputs;
 
@@ -67,7 +68,7 @@ public class CharacterController : MonoBehaviour
 
         if (value.performed &&  Mathf.Abs(axis) > 0f)
         {
-            characterRB.velocity = new Vector2(Mathf.Lerp(characterRB.velocity.x, currentCharacterData.characterStats.speed * axis, 0.5f), characterRB.velocity.y);
+            walkPressed = StartCoroutine(WalkPressed(axis));
             if (characterControls.canClimb)
             {
                 climbChecker = StartCoroutine(CheckForClimb(axis));
@@ -76,6 +77,7 @@ public class CharacterController : MonoBehaviour
         }
         else if(value.canceled)
         {
+            StopCoroutine(walkPressed);
             characterRB.velocity = new Vector2(0f, characterRB.velocity.y);
 
             if (climbChecker != null)
@@ -86,6 +88,14 @@ public class CharacterController : MonoBehaviour
             climbChecker = null;
             groundChecker = StartCoroutine(CheckIfGrounded());
         }
+
+    }
+
+    IEnumerator WalkPressed(float axis)
+    {
+        characterRB.velocity = new Vector2(currentCharacterData.characterStats.speed * axis, characterRB.velocity.y);
+        yield return new WaitForSeconds(Time.deltaTime * 4);
+        walkPressed = StartCoroutine(WalkPressed(axis));
 
     }
 
@@ -175,7 +185,7 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForFixedUpdate();
         if (climbFlag1 && Mathf.Abs(characterRB.velocity.x) < 0.01f)
         {
-            characterRB.velocity = new Vector2(currentCharacterData.characterStats.speed * axis, 5f);
+            characterRB.velocity = new Vector2(characterRB.velocity.x, 5f);
             characterControls.ResetJumps();
             if (groundChecker != null)
             {
