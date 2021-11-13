@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,7 +6,7 @@ using UnityEngine.InputSystem;
 [CreateAssetMenu(fileName = "ControlsData", menuName = "ScriptableObjects/Utility/ControlsData", order = 1)]
 public class ControlsData : ScriptableObject
 {
-    public ControlPairing[] inputs;
+    public InputActionMap inputs;
 
     public int maxJumps = 1;
 
@@ -50,14 +51,6 @@ public class ControlsData : ScriptableObject
     public void ResetJumps()
     {
         jumpsAvailable = maxJumps;
-    }
-    
-    
-[System.Serializable]
-    public struct ControlPairing
-    {
-        public string controlName;
-        public InputAction action;
     }
 
 }
