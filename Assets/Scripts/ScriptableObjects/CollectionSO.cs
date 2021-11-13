@@ -7,6 +7,8 @@ public class CollectionSO : ScriptableObject
 {
     public List<CollectableSO> collectables;
 
+    private CollectableSO selectedCollectable;
+
 
     public void AddCollectable(CollectableSO newCollectable)
     {
@@ -22,4 +24,19 @@ public class CollectionSO : ScriptableObject
 
         return null;
     }
+
+    public void SetSelectedCollectable(CollectableSO collectable)
+    {
+        for(int i = 0; i < collectables.Count; i++)
+        {
+            if(collectables[i] == collectable)
+            {
+                selectedCollectable = collectable;
+                OnSelectedChanged(collectable);
+            }
+        }
+    }
+
+    public delegate void OnSelectedChangedDelegate(CollectableSO selectedCollectable);
+    public event OnSelectedChangedDelegate OnSelectedChanged;
 }

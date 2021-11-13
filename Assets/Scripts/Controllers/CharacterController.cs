@@ -29,6 +29,7 @@ public class CharacterController : MonoBehaviour
         characterRB = GetComponent<Rigidbody2D>();
         characterCollider = GetComponent<Collider2D>();
         characterInputs = characterControls.inputs;
+        collectedCharacters.OnSelectedChanged += SwapToNewCharacter;
 
         for (int i = 0; i < characterInputs.actions.Count; i++) {
             switch (characterInputs.actions[i].name)
@@ -135,6 +136,12 @@ public class CharacterController : MonoBehaviour
         {
             EndSwap.Invoke();
         }
+    }
+
+    private void SwapToNewCharacter(CollectableSO newCharacter)
+    {
+        currentCharacterData = (CharacterData)newCharacter;
+        EndSwap.Invoke();
     }
 
     IEnumerator CheckIfGrounded()
