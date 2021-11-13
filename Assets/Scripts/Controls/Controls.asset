@@ -45,6 +45,13 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
+    - m_Name: Swap Character
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 354c841f-7c6b-4a97-b60a-ed93ebb775ac
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
     m_Bindings:
     - m_Name: 1D Axis
       m_Id: 7d4b9471-665b-43c8-8308-9806ba04d9aa
@@ -94,7 +101,15 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Fly
       m_Flags: 0
+    - m_Name: 
+      m_Id: e3bda7b6-d524-4343-80f1-75f55ad4ac0c
+      m_Path: <Keyboard>/tab
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swap Character
+      m_Flags: 0
   maxJumps: 1
   jumpsAvailable: 1
-  canClimb: 0
+  canClimb: 1
   canFly: 1
