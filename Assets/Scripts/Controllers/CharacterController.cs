@@ -11,12 +11,13 @@ public class CharacterController : MonoBehaviour
     public CollectionSO collectedCharacters;
     public CharacterData currentCharacterData;
     public ControlsData characterControls;
+    public CharacterAppearance characterAppearance;
 
     public UnityEvent StartSwap;
     public UnityEvent EndSwap;
 
     private Rigidbody2D characterRB;
-    private Collider2D characterCollider;
+    private CapsuleCollider2D characterCollider;
 
     private Coroutine groundChecker;
     private Coroutine climbChecker;
@@ -24,16 +25,20 @@ public class CharacterController : MonoBehaviour
 
     private InputActionMap characterInputs;
 
+    private bool attacking = false;
+
     private void Start()
     {
 
         characterRB = GetComponent<Rigidbody2D>();
-        characterCollider = GetComponent<Collider2D>();
+        characterCollider = GetComponent<CapsuleCollider2D>();
         characterInputs = characterControls.inputs;
 
         collectedCharacters.OnSelectedChanged += SwapToNewCharacter;
 
         collectedCharacters.SetSelectedCollectable(currentCharacterData);
+
+        characterAppearance.SwapSprites(currentCharacterData);
 
         InitializeControls();
     }
@@ -81,6 +86,9 @@ public class CharacterController : MonoBehaviour
 
         if (value.performed &&  Mathf.Abs(axis) > 0f)
         {
+            characterAppearance.StartAnimation(value.action.name);
+            attacking = false;
+
             walkPressed = StartCoroutine(WalkPressed(axis));
             if (characterControls.canClimb)
             {
@@ -90,6 +98,8 @@ public class CharacterController : MonoBehaviour
         }
         else if(value.canceled)
         {
+            characterAppearance.Stand();
+
             StopCoroutine(walkPressed);
             characterRB.velocity = new Vector2(0f, characterRB.velocity.y);
 
@@ -107,7 +117,17 @@ public class CharacterController : MonoBehaviour
     IEnumerator WalkPressed(float axis)
     {
         characterRB.velocity = new Vector2(currentCharacterData.characterStats.speed * axis, characterRB.velocity.y);
+        characterAppearance.SetDirection(axis);
+
         yield return new WaitForSeconds(Time.deltaTime * 4);
+
+        characterAppearance.SetDirection(axis);
+
+        if (!characterAppearance.CheckForAnimation())
+        {
+            characterAppearance.StartAnimation("Walk");
+        }
+
         walkPressed = StartCoroutine(WalkPressed(axis));
 
     }
@@ -119,6 +139,9 @@ public class CharacterController : MonoBehaviour
             float axis = value.ReadValue<float>();
             if (axis > 0f)
             {
+                attacking = false;
+                characterAppearance.StartAnimation(value.action.name);
+
                 characterRB.velocity = new Vector2(characterRB.velocity.x, Mathf.Clamp(characterRB.velocity.y, 0f, float.MaxValue));
                 characterRB.AddForce(Vector2.up * currentCharacterData.characterStats.jumpHeight);
                 if (groundChecker == null)
@@ -137,7 +160,16 @@ public class CharacterController : MonoBehaviour
 
     private void Attack(CallbackContext value)
     {
-
+        if(value.performed && currentCharacterData.GetAnimationByName(value.action.name) != null)
+        {
+            characterAppearance.StartAnimation(value.action.name);
+            attacking = true;
+        }
+        if (value.canceled)
+        {
+            characterAppearance.Stand();
+            attacking = false;
+        }
     }
 
     private void Fly(CallbackContext value)
@@ -145,6 +177,7 @@ public class CharacterController : MonoBehaviour
         if (characterControls.canFly && value.performed)
         {
             characterRB.AddForce(Vector2.up * currentCharacterData.characterStats.jumpHeight);
+            attacking = false;
         }
     }
 
@@ -153,6 +186,7 @@ public class CharacterController : MonoBehaviour
 
         if(value.performed && collectedCharacters.collectables.Count > 1)
         {
+            attacking = false;
             StartSwap.Invoke();
         }
         else if(value.canceled)
@@ -167,6 +201,23 @@ public class CharacterController : MonoBehaviour
         characterControls.canClimb = currentCharacterData.characterStats.climbs;
         characterControls.canFly = currentCharacterData.characterStats.flies;
         characterControls.canClimb = currentCharacterData.characterStats.climbs;
+        characterControls.maxJumps = currentCharacterData.characterStats.numJumps;
+        characterControls.ResetJumps();
+        characterAppearance.SwapSprites(currentCharacterData);
+
+        Vector2 size = GetComponent<SpriteRenderer>().sprite.bounds.size;
+        
+        if(currentCharacterData.name != "Human")
+        {
+            characterCollider.direction = CapsuleDirection2D.Horizontal;
+        }
+        else
+        {
+            characterCollider.direction = CapsuleDirection2D.Vertical;
+        }
+
+        characterCollider.size = size;
+
         EndSwap.Invoke();
     }
 
@@ -182,6 +233,7 @@ public class CharacterController : MonoBehaviour
         {
             groundFlag1 = false;
             characterControls.ResetJumps();
+            characterAppearance.Stand();
             groundChecker = null;
         }
         else

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3490fa1a234beed4e9a2ca3121432ac2, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
-  animationID: 
-  spriteCoords: []
-  durationInSeconds: 1
+  animationID: Jump
+  spriteIndexes: 0100000002000000
+  durationInSeconds: 0.5

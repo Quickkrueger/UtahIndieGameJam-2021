@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Walk
   m_EditorClassIdentifier: 
   animationID: Walk
-  spriteCoords: []
-  durationInSeconds: 1
+  spriteIndexes: 0000000001000000
+  durationInSeconds: 0.5

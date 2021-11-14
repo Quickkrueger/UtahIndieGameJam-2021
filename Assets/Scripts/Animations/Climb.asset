@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3490fa1a234beed4e9a2ca3121432ac2, type: 3}
   m_Name: Climb
   m_EditorClassIdentifier: 
-  animationID: 
-  spriteCoords: []
-  durationInSeconds: 1
+  animationID: Climb
+  spriteIndexes: 
+  durationInSeconds: 0.5

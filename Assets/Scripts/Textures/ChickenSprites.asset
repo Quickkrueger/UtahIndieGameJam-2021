@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acadf0ec9175eb14b95004f9f2a92c4c, type: 3}
+  m_Name: ChickenSprites
+  m_EditorClassIdentifier: 
+  spriteSheet:
+  - {fileID: 5336855417275088078, guid: 18f43154c11bbbb4b9d9a1779f31cea8, type: 3}
+  - {fileID: -1433109330887674863, guid: 18f43154c11bbbb4b9d9a1779f31cea8, type: 3}
+  - {fileID: -1642514149361250337, guid: 18f43154c11bbbb4b9d9a1779f31cea8, type: 3}

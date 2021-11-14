@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Squirrel
   m_EditorClassIdentifier: 
   collected: 0
-  spriteSheet: {fileID: 0}
-  characterSpriteOffset: 0
-  animations: []
+  spriteSheet: {fileID: 11400000, guid: 32c7932e1e8466445b29a41575057d0a, type: 2}
+  animations:
+  - {fileID: 11400000, guid: 654c34ad39cade74b8f886feab365464, type: 2}
+  - {fileID: 11400000, guid: 32bf7c77710cdfb4da49b03cb665d849, type: 2}
   characterStats:
     speed: 10
     jumpHeight: 300
+    numJumps: 1
     durable: 0
     flies: 0
     climbs: 1
