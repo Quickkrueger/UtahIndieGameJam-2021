@@ -271,6 +271,14 @@ public class CharacterController : MonoBehaviour
         collectedCharacters.NextCollectable();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (attacking)
+        {
+
+        }
+    }
+
     private void OnDestroy()
     {
 
