@@ -142,7 +142,7 @@ public class CharacterController : MonoBehaviour
         {
             StartSwap.Invoke();
         }
-        else
+        else if(value.canceled)
         {
             EndSwap.Invoke();
         }

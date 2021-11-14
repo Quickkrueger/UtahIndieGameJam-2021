@@ -112,4 +112,4 @@ MonoBehaviour:
   maxJumps: 1
   jumpsAvailable: 1
   canClimb: 1
-  canFly: 1
+  canFly: 0

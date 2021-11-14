@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3837ed683b2111f4385dd00810b6bce1, type: 3}
   m_Name: CharacterCollection
   m_EditorClassIdentifier: 
-  collectables: []
+  collectables:
+  - {fileID: 11400000, guid: c008ee9eb78e0e0478508f184d8817bc, type: 2}
+  - {fileID: 11400000, guid: c008ee9eb78e0e0478508f184d8817bc, type: 2}

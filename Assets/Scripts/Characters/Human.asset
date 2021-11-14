@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9f5d7e720fba671428251ce9e7bd5b16, type: 2}
   - {fileID: 11400000, guid: cb9e2925a380e4e418a87658ff41a60c, type: 2}
   characterStats:
-    speed: 10
+    speed: 5
     jumpHeight: 300
     durable: 0
     flys: 1
