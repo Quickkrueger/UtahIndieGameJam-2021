@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 670737846a5d8ee4eb2c787a6cfce61d, type: 3}
-  m_Name: Human
+  m_Name: Squirrel
   m_EditorClassIdentifier: 
-  collected: 1
-  spriteSheet: {fileID: 11400000, guid: 34d39d9f07e2dd740a858ce573e71a9a, type: 2}
+  collected: 0
+  spriteSheet: {fileID: 11400000, guid: 32c7932e1e8466445b29a41575057d0a, type: 2}
   animations:
   - {fileID: 11400000, guid: 654c34ad39cade74b8f886feab365464, type: 2}
   - {fileID: 11400000, guid: 32bf7c77710cdfb4da49b03cb665d849, type: 2}
   characterStats:
-    speed: 5
+    speed: 10
     jumpHeight: 300
     numJumps: 1
     durable: 0
     flies: 0
-    climbs: 0
+    climbs: 1

@@ -4,6 +4,6 @@ using UnityEngine;
 public class AnimationData : ScriptableObject
 {
     public string animationID;
-    public Vector2Int[] spriteCoords;
+    public int[] spriteIndexes;
     public float durationInSeconds = 1f;
 }

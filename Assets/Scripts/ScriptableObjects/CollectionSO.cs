@@ -7,7 +7,7 @@ public class CollectionSO : ScriptableObject
 {
     public List<CollectableSO> collectables;
 
-    private CollectableSO selectedCollectable;
+    public CollectableSO selectedCollectable;
 
 
     public void AddCollectable(CollectableSO newCollectable)
@@ -23,6 +23,23 @@ public class CollectionSO : ScriptableObject
         }
 
         return null;
+    }
+
+    public void NextCollectable()
+    {
+        int index = collectables.IndexOf(selectedCollectable);
+
+        if(index == collectables.Count - 1)
+        {
+            index = 0;
+        }
+        else
+        {
+            index++;
+        }
+
+        SetSelectedCollectable(GetCollectable(index));
+
     }
 
     public void SetSelectedCollectable(CollectableSO collectable)
