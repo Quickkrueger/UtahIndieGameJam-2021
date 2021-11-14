@@ -15,6 +15,7 @@ public class CharacterController : MonoBehaviour
 
     public UnityEvent StartSwap;
     public UnityEvent EndSwap;
+    public UnityEvent Swapped;
 
     private Rigidbody2D characterRB;
     private CapsuleCollider2D characterCollider;
@@ -203,6 +204,7 @@ public class CharacterController : MonoBehaviour
         characterControls.canClimb = currentCharacterData.characterStats.climbs;
         characterControls.maxJumps = currentCharacterData.characterStats.numJumps;
         characterControls.ResetJumps();
+        Swapped.Invoke();
         characterAppearance.SwapSprites(currentCharacterData);
 
         Vector2 size = GetComponent<SpriteRenderer>().sprite.bounds.size;
