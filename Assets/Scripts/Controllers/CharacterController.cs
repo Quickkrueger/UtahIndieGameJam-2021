@@ -205,6 +205,9 @@ public class CharacterController : MonoBehaviour
         characterControls.canClimb = currentCharacterData.characterStats.climbs;
         characterControls.maxJumps = currentCharacterData.characterStats.numJumps;
         characterControls.ResetJumps();
+
+        transform.localScale = new Vector3(currentCharacterData.characterStats.size, currentCharacterData.characterStats.size, currentCharacterData.characterStats.size);
+
         Swapped.Invoke();
         characterAppearance.SwapSprites(currentCharacterData);
 
@@ -268,9 +271,9 @@ public class CharacterController : MonoBehaviour
         climbChecker = StartCoroutine(CheckForClimb(axis));
     }
 
-    public void DeathSequence(Transform respawnLocation)
+    public void DeathSequence(Vector3 respawnLocation)
     {
-        transform.position = respawnLocation.position;
+        transform.position = respawnLocation;
         collectedCharacters.NextCollectable();
     }
 

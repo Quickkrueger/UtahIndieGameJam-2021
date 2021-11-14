@@ -39,6 +39,7 @@ public struct Stats
 {
     public float speed;
     public float jumpHeight;
+    public float size;
     public int numJumps;
     public bool durable;
     public bool flies;

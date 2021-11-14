@@ -20,6 +20,7 @@ MonoBehaviour:
   characterStats:
     speed: 5
     jumpHeight: 300
+    size: 1
     numJumps: 1
     durable: 0
     flies: 0
