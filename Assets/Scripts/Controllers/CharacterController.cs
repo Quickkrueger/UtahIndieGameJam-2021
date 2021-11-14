@@ -88,8 +88,10 @@ public class CharacterController : MonoBehaviour
 
         if (value.performed &&  Mathf.Abs(axis) > 0f)
         {
-            characterAppearance.StartAnimation(value.action.name);
-            attacking = false;
+            if (!attacking)
+            {
+                characterAppearance.StartAnimation(value.action.name);
+            }
 
             walkPressed = StartCoroutine(WalkPressed(axis));
             if (characterControls.canClimb)
@@ -204,6 +206,7 @@ public class CharacterController : MonoBehaviour
         characterControls.canFly = currentCharacterData.characterStats.flies;
         characterControls.canClimb = currentCharacterData.characterStats.climbs;
         characterControls.maxJumps = currentCharacterData.characterStats.numJumps;
+        characterControls.isDurable = currentCharacterData.characterStats.durable;
         characterControls.ResetJumps();
 
         transform.localScale = new Vector3(currentCharacterData.characterStats.size, currentCharacterData.characterStats.size, currentCharacterData.characterStats.size);
@@ -281,7 +284,12 @@ public class CharacterController : MonoBehaviour
     {
         if (attacking)
         {
-
+            Barrier barrier = collision.gameObject.GetComponent<Barrier>();
+            if(barrier != null)
+            {
+                barrier.BreakMe();
+                attacking = false;
+            }
         }
     }
 

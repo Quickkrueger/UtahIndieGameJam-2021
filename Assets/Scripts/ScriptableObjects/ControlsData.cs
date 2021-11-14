@@ -16,6 +16,8 @@ public class ControlsData : ScriptableObject
 
     public bool canFly;
 
+    public bool isDurable;
+
     public ControlsData()
     {
         jumpsAvailable = maxJumps;
