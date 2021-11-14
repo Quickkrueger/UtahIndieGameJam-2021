@@ -12,7 +12,8 @@ public class SwapItem : MonoBehaviour
     {
         itemData = newData;
 
-        GetComponentInChildren<Text>().text = itemData.name;
+        //GetComponentInChildren<Text>().text = itemData.name;
+        GetComponent<Image>().sprite = itemData.spriteSheet.spriteSheet[0];
 
         itemCollection.OnSelectedChanged += UpdateSelection;
 

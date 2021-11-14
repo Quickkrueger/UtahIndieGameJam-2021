@@ -35673,6 +35673,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 496230879}
     m_Modifications:
+    - target: {fileID: 4405012225278250090, guid: 679cb0903129f4c44af96a04fba9fed5, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405012225278250090, guid: 679cb0903129f4c44af96a04fba9fed5, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405012225278250091, guid: 679cb0903129f4c44af96a04fba9fed5, type: 3}
+      propertyPath: m_ChildScaleWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405012225278250091, guid: 679cb0903129f4c44af96a04fba9fed5, type: 3}
+      propertyPath: m_ChildScaleHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4405012225278250092, guid: 679cb0903129f4c44af96a04fba9fed5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
