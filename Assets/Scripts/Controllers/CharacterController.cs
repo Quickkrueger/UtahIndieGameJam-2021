@@ -30,24 +30,37 @@ public class CharacterController : MonoBehaviour
         characterRB = GetComponent<Rigidbody2D>();
         characterCollider = GetComponent<Collider2D>();
         characterInputs = characterControls.inputs;
+
         collectedCharacters.OnSelectedChanged += SwapToNewCharacter;
 
-        for (int i = 0; i < characterInputs.actions.Count; i++) {
+        collectedCharacters.SetSelectedCollectable(currentCharacterData);
+
+        InitializeControls();
+    }
+
+    void InitializeControls()
+    {
+        for (int i = 0; i < characterInputs.actions.Count; i++)
+        {
             switch (characterInputs.actions[i].name)
             {
-                case "Walk": characterInputs.actions[i].performed += Walk;
+                case "Walk":
+                    characterInputs.actions[i].performed += Walk;
                     characterInputs.actions[i].canceled += Walk;
                     characterInputs.actions[i].Enable();
                     break;
-                case "Jump": characterInputs.actions[i].performed += Jump;
+                case "Jump":
+                    characterInputs.actions[i].performed += Jump;
                     characterInputs.actions[i].canceled += Jump;
                     characterInputs.actions[i].Enable();
                     break;
-                case "Attack": characterInputs.actions[i].performed += Attack;
+                case "Attack":
+                    characterInputs.actions[i].performed += Attack;
                     characterInputs.actions[i].canceled += Attack;
                     characterInputs.actions[i].Enable();
                     break;
-                case "Fly": characterInputs.actions[i].performed += Fly;
+                case "Fly":
+                    characterInputs.actions[i].performed += Fly;
                     characterInputs.actions[i].canceled += Fly;
                     characterInputs.actions[i].Enable();
                     break;
@@ -57,7 +70,7 @@ public class CharacterController : MonoBehaviour
                     characterInputs.actions[i].Enable();
                     break;
             }
-            
+
         }
     }
 
@@ -151,6 +164,9 @@ public class CharacterController : MonoBehaviour
     private void SwapToNewCharacter(CollectableSO newCharacter)
     {
         currentCharacterData = (CharacterData)newCharacter;
+        characterControls.canClimb = currentCharacterData.characterStats.climbs;
+        characterControls.canFly = currentCharacterData.characterStats.flies;
+        characterControls.canClimb = currentCharacterData.characterStats.climbs;
         EndSwap.Invoke();
     }
 
@@ -195,5 +211,45 @@ public class CharacterController : MonoBehaviour
         }
 
         climbChecker = StartCoroutine(CheckForClimb(axis));
+    }
+
+    public void DeathSequence(Transform respawnLocation)
+    {
+        transform.position = respawnLocation.position;
+        collectedCharacters.NextCollectable();
+    }
+
+    private void OnDestroy()
+    {
+
+        collectedCharacters.OnSelectedChanged -= SwapToNewCharacter;
+
+        for (int i = 0; i < characterInputs.actions.Count; i++)
+        {
+            switch (characterInputs.actions[i].name)
+            {
+                case "Walk":
+                    characterInputs.actions[i].performed -= Walk;
+                    characterInputs.actions[i].canceled -= Walk;
+                    break;
+                case "Jump":
+                    characterInputs.actions[i].performed -= Jump;
+                    characterInputs.actions[i].canceled -= Jump;
+                    break;
+                case "Attack":
+                    characterInputs.actions[i].performed -= Attack;
+                    characterInputs.actions[i].canceled -= Attack;
+                    break;
+                case "Fly":
+                    characterInputs.actions[i].performed -= Fly;
+                    characterInputs.actions[i].canceled -= Fly;
+                    break;
+                case "Swap Character":
+                    characterInputs.actions[i].performed -= SwapCharacter;
+                    characterInputs.actions[i].canceled -= SwapCharacter;
+                    break;
+            }
+
+        }
     }
 }

@@ -15,6 +15,6 @@ public struct Stats
     public float speed;
     public float jumpHeight;
     public bool durable;
-    public bool flys;
+    public bool flies;
     public bool climbs;
 }
