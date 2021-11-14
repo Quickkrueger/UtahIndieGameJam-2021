@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc289d7bee86764d8ded633dc860f9a, type: 3}
+  m_Name: Controls
+  m_EditorClassIdentifier: 
+  inputs:
+    m_Name: Inputs
+    m_Id: fe9103cb-c3ef-4dc2-ba86-1f606737eb90
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: Walk
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: c795b80b-2225-4924-a3cd-4821dabd9762
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: Jump
+      m_Type: 0
+      m_ExpectedControlType: Button
+      m_Id: 71c6da80-b121-4d04-8021-be67b7280c6a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: Attack
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 250eca11-3146-494c-906a-4f3d660bd19d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: Fly
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 4bf46ba0-eb4d-4103-bfd7-2ef22cc39e1b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: Swap Character
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 354c841f-7c6b-4a97-b60a-ed93ebb775ac
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Bindings:
+    - m_Name: 1D Axis
+      m_Id: 7d4b9471-665b-43c8-8308-9806ba04d9aa
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Walk
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 5dfd9701-a097-4331-8e81-35cfed450b08
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Walk
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: eedc7cc1-62af-4622-958a-ac4d4a3befbf
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Walk
+      m_Flags: 8
+    - m_Name: 
+      m_Id: 3b0144ec-888e-4223-b53c-a0c9d146d571
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    - m_Name: 
+      m_Id: c0e1c780-d1d4-4261-8d0b-4b9a9343a580
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Attack
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 9893c547-c348-42d5-8b34-461189fc82ce
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fly
+      m_Flags: 0
+    - m_Name: 
+      m_Id: e3bda7b6-d524-4343-80f1-75f55ad4ac0c
+      m_Path: <Keyboard>/tab
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swap Character
+      m_Flags: 0
+  maxJumps: 1
+  jumpsAvailable: 1
+  canClimb: 1
+  canFly: 0
